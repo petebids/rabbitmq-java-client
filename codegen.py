@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 ## Copyright (c) 2007-2020 VMware, Inc. or its affiliates.  All rights reserved.
 ##

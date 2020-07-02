@@ -16,7 +16,7 @@ def md5(final file) {
 
 def generate_source(final type, final filename) {
   String[] command = [
-    'python',
+    'python3',
     properties['script'], type,
     properties['spec'],
     filename

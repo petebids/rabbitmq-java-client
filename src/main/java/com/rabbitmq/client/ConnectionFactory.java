@@ -1570,4 +1570,215 @@ public class ConnectionFactory implements Cloneable {
     public void setTrafficListener(TrafficListener trafficListener) {
         this.trafficListener = trafficListener;
     }
+    public ConnectionFactory virtualHost(String virtualHost) {
+        this.virtualHost = virtualHost;
+        return this;
+    }
+    /** @param host the default host to use for connections */
+    public ConnectionFactory host(String host) {
+        this.host = host;
+        return this;
+    }
+
+    public ConnectionFactory port(int port) {
+        this.port = port;
+        return this;
+    }
+
+    public ConnectionFactory requestedChannelMax(int requestedChannelMax) {
+        this.requestedChannelMax = requestedChannelMax;
+        return this;
+    }
+
+    public ConnectionFactory requestedFrameMax(int requestedFrameMax) {
+        this.requestedFrameMax = requestedFrameMax;
+        return this;
+    }
+
+    public ConnectionFactory requestedHeartbeat(int requestedHeartbeat) {
+        this.requestedHeartbeat = requestedHeartbeat;
+        return this;
+    }
+
+    public ConnectionFactory connectionTimeout(int connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
+        return this;
+    }
+
+    public ConnectionFactory handshakeTimeout(int handshakeTimeout) {
+        this.handshakeTimeout = handshakeTimeout;
+        return this;
+    }
+
+    public ConnectionFactory shutdownTimeout(int shutdownTimeout) {
+        this.shutdownTimeout = shutdownTimeout;
+        return this;
+    }
+
+    public ConnectionFactory _clientProperties(Map<String,Object> _clientProperties) {
+        this._clientProperties = _clientProperties;
+        return this;
+    }
+
+    public ConnectionFactory socketFactory(SocketFactory socketFactory) {
+        this.socketFactory = socketFactory;
+        return this;
+    }
+
+    public ConnectionFactory saslConfig(SaslConfig saslConfig) {
+        this.saslConfig = saslConfig;
+        return this;
+    }
+
+    public ConnectionFactory sharedExecutor(ExecutorService sharedExecutor) {
+        this.sharedExecutor = sharedExecutor;
+        return this;
+    }
+
+    public ConnectionFactory threadFactory(ThreadFactory threadFactory) {
+        this.threadFactory = threadFactory;
+        return this;
+    }
+
+    public ConnectionFactory shutdownExecutor(ExecutorService shutdownExecutor) {
+        this.shutdownExecutor = shutdownExecutor;
+        return this;
+    }
+
+    public ConnectionFactory heartbeatExecutor(ScheduledExecutorService heartbeatExecutor) {
+        this.heartbeatExecutor = heartbeatExecutor;
+        return this;
+    }
+
+    public ConnectionFactory socketConf(SocketConfigurator socketConf) {
+        this.socketConf = socketConf;
+        return this;
+    }
+
+    public ConnectionFactory exceptionHandler(ExceptionHandler exceptionHandler) {
+        this.exceptionHandler = exceptionHandler;
+        return this;
+    }
+
+    public ConnectionFactory credentialsProvider(CredentialsProvider credentialsProvider) {
+        this.credentialsProvider = credentialsProvider;
+        return this;
+    }
+
+    public ConnectionFactory automaticRecovery(boolean automaticRecovery) {
+        this.automaticRecovery = automaticRecovery;
+        return this;
+    }
+
+    public ConnectionFactory topologyRecovery(boolean topologyRecovery) {
+        this.topologyRecovery = topologyRecovery;
+        return this;
+    }
+
+    public ConnectionFactory topologyRecoveryExecutor(ExecutorService topologyRecoveryExecutor) {
+        this.topologyRecoveryExecutor = topologyRecoveryExecutor;
+        return this;
+    }
+
+    public ConnectionFactory networkRecoveryInterval(long networkRecoveryInterval) {
+        this.networkRecoveryInterval = networkRecoveryInterval;
+        return this;
+    }
+
+    public ConnectionFactory recoveryDelayHandler(RecoveryDelayHandler recoveryDelayHandler) {
+        this.recoveryDelayHandler = recoveryDelayHandler;
+        return this;
+    }
+
+    public ConnectionFactory metricsCollector(MetricsCollector metricsCollector) {
+        this.metricsCollector = metricsCollector;
+        return this;
+    }
+
+        /**
+     * Use non-blocking IO (NIO) for communication with the server.
+     * With NIO, several connections created from the same {@link ConnectionFactory}
+     * can use the same IO thread.
+     *
+     * A client process using a lot of not-so-active connections can benefit
+     * from NIO, as it would use fewer threads than with the traditional, blocking IO mode.
+     *
+     * Use {@link NioParams} to tune NIO and a {@link SocketChannelConfigurator} to
+     * configure the underlying {@link java.nio.channels.SocketChannel}s for connections.
+     * 
+     * Pass null to use default NioParams configuration
+     *
+     * @see NioParams
+     * @see SocketChannelConfigurator
+     * @see java.nio.channels.SocketChannel
+     * @see java.nio.channels.Selector
+     */
+    public ConnectionFactory nio(NioParams nioParams) {
+        if (nioParams==null) {
+            this.nioParams = new NioParams();    	
+        }
+        else {
+        	this.nioParams = nioParams;
+        }
+
+        return this;
+    }
+
+    public ConnectionFactory frameHandlerFactory(FrameHandlerFactory frameHandlerFactory) {
+        this.frameHandlerFactory = frameHandlerFactory;
+        return this;
+    }
+
+
+    public ConnectionFactory sslContextFactory(SslContextFactory sslContextFactory) {
+        this.sslContextFactory = sslContextFactory;
+        return this;
+    }
+
+    public ConnectionFactory channelRpcTimeout(int channelRpcTimeout) {
+        this.channelRpcTimeout = channelRpcTimeout;
+        return this;
+    }
+
+    public ConnectionFactory channelShouldCheckRpcResponseType(boolean channelShouldCheckRpcResponseType) {
+        this.channelShouldCheckRpcResponseType = channelShouldCheckRpcResponseType;
+        return this;
+    }
+
+    public ConnectionFactory errorOnWriteListener(ErrorOnWriteListener errorOnWriteListener) {
+        this.errorOnWriteListener = errorOnWriteListener;
+        return this;
+    }
+
+    public ConnectionFactory workPoolTimeout(int workPoolTimeout) {
+        this.workPoolTimeout = workPoolTimeout;
+        return this;
+    }
+
+    public ConnectionFactory topologyRecoveryFilter(TopologyRecoveryFilter topologyRecoveryFilter) {
+        this.topologyRecoveryFilter = topologyRecoveryFilter;
+        return this;
+    }
+
+    public ConnectionFactory connectionRecoveryTriggeringCondition(Predicate<ShutdownSignalException> connectionRecoveryTriggeringCondition) {
+        this.connectionRecoveryTriggeringCondition = connectionRecoveryTriggeringCondition;
+        return this;
+    }
+
+    public ConnectionFactory topologyRecoveryRetryHandler(RetryHandler topologyRecoveryRetryHandler) {
+        this.topologyRecoveryRetryHandler = topologyRecoveryRetryHandler;
+        return this;
+    }
+
+    public ConnectionFactory trafficListener(TrafficListener trafficListener) {
+        this.trafficListener = trafficListener;
+        return this;
+    }
+
+    public ConnectionFactory credentialsRefreshService(CredentialsRefreshService credentialsRefreshService) {
+        this.credentialsRefreshService = credentialsRefreshService;
+        return this;
+    }
+
+
 }
